@@ -8,10 +8,17 @@ class UsersController < ApplicationController
     if !params[:user].values.any?(&:empty?)
       @user = User.create(params[:user])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect '/workouts'
     else
       redirect '/signup'
     end
   end
+
+  get '/login' do
+    erb :'users/login'
+  end
+
+
+
 
 end
