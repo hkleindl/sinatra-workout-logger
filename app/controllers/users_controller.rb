@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+    binding.pry
     if !params[:user].values.any?(&:empty?)
       @user = User.create(params[:user])
       session[:user_id] = @user.id

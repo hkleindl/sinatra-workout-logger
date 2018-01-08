@@ -21,6 +21,14 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user = User.find_by(id: session[:user_id])
     end
+
+    def username_taken?
+      !!User.find_by(username: params[:user][:username])
+    end
+
+    def email_taken?
+      !!User.find_by(email: params[:user][:email])
+    end
   end
 
 end
