@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'users/signup'
+    if !logged_in?
+      erb :'users/signup'
+    else
+      redirect '/workouts'
+    end
   end
 
   post '/signup' do
+    #refactor?
     if !params[:user].values.any?(&:empty?)
       if !username_taken? && !email_taken?
         @user = User.create(params[:user])
