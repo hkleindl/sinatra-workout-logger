@@ -35,4 +35,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  def redirect_if_not_logged_in
+    flash[:message] = "You must be logged in to view page."
+    redirect '/'
+  end
+
 end
