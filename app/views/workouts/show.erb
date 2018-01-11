@@ -25,6 +25,6 @@
 <form style="display:inline" action="/exercise/resistance/new" method="post">
   <input type="submit" value="Add Resistance Exercise">
 </form>
-<form style="display:inline" action="/workouts/:id/delete" method="post">
+<form style="display:inline" action="/workouts/<%= @workout.id %>/delete" method="post">
   <input type="submit" value="Delete Workout">
 </form>

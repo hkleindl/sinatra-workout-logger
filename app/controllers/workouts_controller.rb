@@ -49,7 +49,11 @@ class WorkoutsController < ApplicationController
     redirect "/workouts/#{@workout.id}"
   end
 
-
+  post '/workouts/:id/delete' do
+    @workout = Workout.find_by(id: params[:id])
+    @workout.destroy
+    redirect '/workouts'
+  end
 
 
 end
