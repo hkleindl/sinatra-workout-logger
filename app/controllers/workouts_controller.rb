@@ -21,6 +21,12 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  post '/workouts/new' do
+    if !params[:workout][:date].empty?
+      @workout = Workout.create(params[:workout])
+      redirect '/workouts'
+    end
+  end
 
 
 end
