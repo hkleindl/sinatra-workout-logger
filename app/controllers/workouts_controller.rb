@@ -33,5 +33,14 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  get '/workouts/:id/edit' do
+    if logged_in?
+      @workout = Workout.find_by(id: params[:id])
+      erb '/workouts/edit'
+    else
+      redirect_if_not_logged_in
+    end
+  end
+
 
 end
