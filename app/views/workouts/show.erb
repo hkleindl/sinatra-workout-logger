@@ -1,7 +1,7 @@
 <h1><%= @workout.date %></h1>
 <h3>Notes:</h3>
 <p><%= @workout.notes %></p>
-<form action="/workouts/:id/edit" method="post">
+<form action="/workouts/:id/edit" method="get">
   <input type="submit" value="Edit Notes">
 </form>
 <h3>Exercises:</h3>
