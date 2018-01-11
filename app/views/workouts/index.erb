@@ -1,6 +1,11 @@
 <h1>Workouts</h1>
 <ul>
   <% Workout.all.each do |workout| %>
-      <li><a href="/workout/<%= workout.id %>"><%= workout.date %></li>
+      <li><a href="/workouts/<%= workout.id %>"><%= workout.date %></li>
+      <br></br>
   <% end %>
+
+  <form action="/workouts/new" method="get">
+    <input type="submit" value="Add New Workout">
+  </form>
 </ul>
