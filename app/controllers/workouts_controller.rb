@@ -1,7 +1,6 @@
 class WorkoutsController < ApplicationController
 
   get '/workouts' do
-    binding.pry
     if logged_in?
       @user = User.find_by(id: session[:user_id])
       erb :'/workouts/index'
@@ -21,6 +20,9 @@ class WorkoutsController < ApplicationController
   post '/workouts/new' do
     if !params[:workout][:date].empty?
       @workout = Workout.create(params[:workout])
+      @workout.user = current_user
+      current_user.workouts << @workout
+      @workout.save
       redirect '/workouts'
     else
       flash[:message] = "Please fill choose date"
