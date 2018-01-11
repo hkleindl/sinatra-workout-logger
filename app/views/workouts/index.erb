@@ -1,6 +1,6 @@
 <h1>Workouts</h1>
 <ul>
-  <% Workout.all.order(:date).each do |workout| %>
+  <% current_user.workouts.all.order(:date).each do |workout| %>
       <li><a href="/workouts/<%= workout.id %>"><%= workout.date %></li>
       <br></br>
   <% end %>
