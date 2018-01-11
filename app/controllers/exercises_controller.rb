@@ -1,4 +1,4 @@
-class ExercisesController < ActiveRecord
+class ExercisesController < ApplicationController
 
   get '/exercises' do
     if logged_in?

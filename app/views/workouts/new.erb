@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>New Workout </h1>
 <form action="/workouts/new" method="post">
   <label>Date:</label>
