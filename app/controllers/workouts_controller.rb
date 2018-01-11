@@ -5,8 +5,6 @@ class WorkoutsController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       erb :'/workouts/index'
     else
-      # flash[:message] = "You must be logged in to view page."
-      # redirect '/'
       redirect_if_not_logged_in
     end
   end
@@ -15,8 +13,6 @@ class WorkoutsController < ApplicationController
     if logged_in?
       erb :'/workouts/new'
     else
-      # flash[:message] = "You must be logged in to view page."
-      # redirect '/'
       redirect_if_not_logged_in
     end
   end
@@ -25,6 +21,15 @@ class WorkoutsController < ApplicationController
     if !params[:workout][:date].empty?
       @workout = Workout.create(params[:workout])
       redirect '/workouts'
+    end
+  end
+
+  get '/workout/:id' do
+    if logged_in?
+      @workout = Workout.find_by(id: params[:id])
+      erb :'/workouts/show'
+    else
+      redirect_if_not_logged_in
     end
   end
 
