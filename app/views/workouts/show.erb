@@ -1,3 +1,27 @@
 <h1><%= @workout.date %></h1>
 <h3>Notes:</h3>
 <p><%= @workout.notes %></p>
+<h3>Exercises:</h3>
+
+<% 3.times.with_index(1) do |exercise, i| %>
+<div>
+  <p style="display:inline" >exercise <%= i %></p>
+  <form style="display:inline" action="/exercises/:id/edit" method="post">
+    <input type="submit" value="Edit">
+  </form>
+  <form style="display:inline" action="/exercises/:id/delete" method="post">
+    <input type="submit" value="Delete">
+  </form>
+</div>
+<br></br>
+<% end %>
+
+<form style="display:inline" action="/exercise/cardio/new" method="post">
+  <input type="submit" value="Add Cardio Exercise">
+</form>
+<form style="display:inline" action="/exercise/resistance/new" method="post">
+  <input type="submit" value="Add Resistance Exercise">
+</form>
+<form style="display:inline" action="/workouts/delete" method="post">
+  <input type="submit" value="Delete Workout">
+</form>
