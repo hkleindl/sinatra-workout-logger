@@ -54,6 +54,4 @@ class WorkoutsController < ApplicationController
     @workout.destroy
     redirect '/workouts'
   end
-
-
 end
