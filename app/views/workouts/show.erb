@@ -1,6 +1,9 @@
 <h1><%= @workout.date %></h1>
 <h3>Notes:</h3>
 <p><%= @workout.notes %></p>
+<form action="/workouts/:id/edit" method="post">
+  <input type="submit" value="Edit Notes">
+</form>
 <h3>Exercises:</h3>
 
 <% 3.times.with_index(1) do |exercise, i| %>
@@ -22,6 +25,6 @@
 <form style="display:inline" action="/exercise/resistance/new" method="post">
   <input type="submit" value="Add Resistance Exercise">
 </form>
-<form style="display:inline" action="/workouts/delete" method="post">
+<form style="display:inline" action="/workouts/:id/delete" method="post">
   <input type="submit" value="Delete Workout">
 </form>
