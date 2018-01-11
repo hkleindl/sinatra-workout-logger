@@ -11,9 +11,9 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  get 'workouts/new' do
+  get '/workouts/new' do
     if logged_in?
-      erb :'workouts/new'
+      erb :'/workouts/new'
     else
       # flash[:message] = "You must be logged in to view page."
       # redirect '/'
