@@ -25,7 +25,7 @@ class WorkoutsController < ApplicationController
       @workout.save
       redirect '/workouts'
     else
-      flash[:message] = "Please fill choose date"
+      flash[:message] = "Please enter date"
       redirect '/workouts/new'
     end
   end

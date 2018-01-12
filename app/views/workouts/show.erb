@@ -19,10 +19,10 @@
 <br></br>
 <% end %>
 
-<form style="display:inline" action="/exercise/cardio/new" method="post">
+<form style="display:inline" action="/exercises/cardio/new" method="get">
   <input type="submit" value="Add Cardio Exercise">
 </form>
-<form style="display:inline" action="/exercise/resistance/new" method="post">
+<form style="display:inline" action="/exercises/resistance/new" method="get">
   <input type="submit" value="Add Resistance Exercise">
 </form>
 <form style="display:inline" action="/workouts/<%= @workout.id %>/delete" method="post">

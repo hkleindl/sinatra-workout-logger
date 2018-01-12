@@ -1,1 +1,26 @@
-<h1>Add Cardio</h1>
+<h1>Create Cardio Exercise</h1>
+<form action="/exercises/cardio/new" method="post">
+  <!-- <% if current_user.exercises.exists? %>
+    <h3><label>Choose Exercise:</label></h3>
+    <% current_user.exercises.where(category: 'cardio').each do |exercise| %>
+      <input type="radio" name="cardio[name]" value="<%= exercise.name %>"><%= exercise.name %></input>
+    <% end %>
+  <% end %> -->
+
+
+  <label>Name:</label>
+  <input type="text" name="cardio[name]">
+  <br></br>
+
+  <label>Intensity:</label>
+  <input type="radio" name="cardio[intensity]" value="low">Low</input>
+  <input type="radio" name="cardio[intensity]" value="medium">Medium</input>
+  <input type="radio" name="cardio[intensity]" value="high">High</input>
+  <br></br>
+
+  <label>Minutes Performed:</label>
+  <input type="number" min="1" name="cardio[minutes]">
+  <br></br>
+
+  <input type="submit" value="Add Cardio">
+</form>

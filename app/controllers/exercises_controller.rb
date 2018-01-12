@@ -8,7 +8,7 @@ class ExercisesController < ApplicationController
     end
   end
 
-  get 'exercises/cardio/new' do
+  get '/exercises/cardio/new' do
     if logged_in?
       erb :'/exercises/cardio/new'
     else
