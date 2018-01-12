@@ -19,6 +19,8 @@ class ExercisesController < ApplicationController
   post '/exercises/cardio/new' do
     if !params[:cardio][:name].empty?
       @exercise = Exercise.create(params[:cardio])
+      @exercise.category = 'cardio'
+      @exercise.save
       current_user.exercises << @exercise
       redirect '/exercises/cardio/add'
     else
@@ -36,9 +38,10 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/cardio/add' do
-    if !params[:cardio].any?(&:empty?)
-      @exercise = Exerise.create(params[:cardio])
+    if !params[:cardio].values.any?(&:empty?)
+      @exercise = Exercise.create(params[:cardio])
       @workout = Workout.find_by(id: session[:workout_id])
+      # binding.pry
       @exercise.workout_id = @workout.id
       @workout.exercises << @exercise
       redirect "/workouts/#{current_workout.id}"

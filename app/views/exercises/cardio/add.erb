@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>Add Cardio</h1>
 <form action="/exercises/cardio/add" method="post">
   <% if current_user.exercises.exists? %>
