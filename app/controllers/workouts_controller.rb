@@ -31,6 +31,7 @@ class WorkoutsController < ApplicationController
   end
 
   get '/workouts/:id' do
+    # binding.pry
     if logged_in?
       @workout = current_user.workouts.find_by(id: params[:id])
       session[:workout_id] = @workout.id
@@ -42,6 +43,7 @@ class WorkoutsController < ApplicationController
 
   get '/workouts/:id/edit' do
     if logged_in?
+      # binding.pry
       @workout = current_user.workouts.find_by(id: params[:id])
       erb :'/workouts/edit'
     else

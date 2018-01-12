@@ -1,14 +1,17 @@
 <h1><%= @workout.date %></h1>
 <h3>Notes:</h3>
 <p><%= @workout.notes %></p>
-<form action="/workouts/:id/edit" method="get">
+<form action="/workouts/<%= @workout.id %>/edit" method="get">
   <input type="submit" value="Edit Notes">
 </form>
+<br></br>
 <h3>Exercises:</h3>
 
-<% 3.times.with_index(1) do |exercise, i| %>
+<% current_workout.exercises.each do |exercise| %>
 <div>
-  <p style="display:inline">exercise <%= i %></p>
+  <h4><%= exercise.name %></h4>
+  <p>Intensity: <%= exercise.intensity %></p>
+  <p>Minutes Performed: <%= exercise.minutes %></p>
   <form style="display:inline" action="/exercises/:id/edit" method="post">
     <input type="submit" value="Edit">
   </form>

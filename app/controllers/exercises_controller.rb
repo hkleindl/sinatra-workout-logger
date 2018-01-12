@@ -41,7 +41,6 @@ class ExercisesController < ApplicationController
     if !params[:cardio].values.any?(&:empty?)
       @exercise = Exercise.create(params[:cardio])
       @workout = Workout.find_by(id: session[:workout_id])
-      # binding.pry
       @exercise.workout_id = @workout.id
       @workout.exercises << @exercise
       redirect "/workouts/#{current_workout.id}"
