@@ -37,6 +37,9 @@ class ExercisesController < ApplicationController
   post '/exercises/cardio/add' do
     if !params[:cardio].any?(&:empty?)
       @exercise = Exerise.create(params[:cardio])
+      @workout = Workout.find_by(id: session[:workout_id])
+      @exercise.workout_id = @workout.id
+      @workout.exercises << @exercise
       redirect "/workouts/#{current_workout.id}"
     else
       flash[:message] = "Please fill out all forms"
