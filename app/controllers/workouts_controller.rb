@@ -33,6 +33,7 @@ class WorkoutsController < ApplicationController
   get '/workouts/:id' do
     if logged_in?
       @workout = current_user.workouts.find_by(id: params[:id])
+      session[:workout_id] = @workout.id
       erb :'/workouts/show'
     else
       redirect_if_not_logged_in
