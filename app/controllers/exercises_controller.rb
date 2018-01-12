@@ -18,7 +18,8 @@ class ExercisesController < ApplicationController
 
   post '/exercises/cardio/new' do
     if !params[:cardio][:name].empty?
-      @exercise = Exercise.create(params)
+      @exercise = Exercise.create(params[:cardio])
+      current_user.exercises << @exercise
       redirect '/exercises/cardio/add'
     else
       flash[:message] = "Please fill out name field"
