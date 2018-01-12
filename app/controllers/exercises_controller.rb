@@ -31,5 +31,8 @@ class ExercisesController < ApplicationController
       erb :'/exercises/cardio/add'
     else
       redirect_if_not_logged_in
+    end
   end
+
+
 end
