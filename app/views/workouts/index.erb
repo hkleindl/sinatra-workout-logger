@@ -1,11 +1,12 @@
-<h1>Workouts</h1>
+<h1>Welcome, <%= @user.username %></h1>
+<br></br>
+<h3>Workouts</h3>
 <ul>
   <% current_user.workouts.all.order(:date).each do |workout| %>
       <li><a href="/workouts/<%= workout.id %>"><%= workout.date %></li>
       <br></br>
   <% end %>
-
-  <form action="/workouts/new" method="get">
-    <input type="submit" value="Add New Workout">
-  </form>
 </ul>
+<form action="/workouts/new" method="get">
+  <input type="submit" value="Add New Workout">
+</form>
