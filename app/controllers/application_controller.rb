@@ -40,4 +40,8 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
+  def current_workout
+    @current_workout = Workout.find_by(id: session[:workout_id])
+  end
+
 end
