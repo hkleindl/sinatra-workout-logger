@@ -8,7 +8,7 @@
 
 <% 3.times.with_index(1) do |exercise, i| %>
 <div>
-  <p style="display:inline" >exercise <%= i %></p>
+  <p style="display:inline">exercise <%= i %></p>
   <form style="display:inline" action="/exercises/:id/edit" method="post">
     <input type="submit" value="Edit">
   </form>
@@ -19,10 +19,10 @@
 <br></br>
 <% end %>
 
-<form style="display:inline" action="/exercises/cardio/new" method="get">
+<form style="display:inline" action="/exercises/cardio/add" method="get">
   <input type="submit" value="Add Cardio Exercise">
 </form>
-<form style="display:inline" action="/exercises/resistance/new" method="get">
+<form style="display:inline" action="/exercises/resistance/add" method="get">
   <input type="submit" value="Add Resistance Exercise">
 </form>
 <form style="display:inline" action="/workouts/<%= @workout.id %>/delete" method="post">
