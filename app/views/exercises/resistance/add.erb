@@ -7,7 +7,7 @@
   <% if current_user.exercises.where(category: 'resistance').exists? %>
     <h3><label>Choose Exercise:</label></h3>
     <% current_user.exercises.where(category: 'resistance').each do |exercise| %>
-        <input type="radio" name="resistance[name]" value="<%= exercise.name %>"><%= exercise.name %></input>
+        <input type="radio" name="name" value="<%= exercise.name %>"><%= exercise.name %></input>
     <% end %>
     <br></br>
 

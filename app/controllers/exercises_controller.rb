@@ -18,9 +18,10 @@ class ExercisesController < ApplicationController
 
   post '/exercises/cardio/new' do
     if !params[:cardio][:name].empty?
+      # binding.pry
       @exercise = Exercise.create(params[:cardio])
-      @exercise.category = 'cardio'
-      @exercise.save
+      # @exercise.category = 'cardio'
+      # @exercise.save
       current_user.exercises << @exercise
       redirect '/exercises/cardio/add'
     else
@@ -39,7 +40,9 @@ class ExercisesController < ApplicationController
 
   post '/exercises/cardio/add' do
     if !params[:cardio].values.any?(&:empty?)
-      @exercise = Exercise.create(params[:cardio])
+      binding.pry
+      @exercise = current_user.exercises.find_by(name: params[:name])
+      @exercise.update(params[:cardio])
       @workout = Workout.find_by(id: session[:workout_id])
       @exercise.workout_id = @workout.id
       @workout.exercises << @exercise
@@ -60,7 +63,8 @@ class ExercisesController < ApplicationController
 
   post '/exercises/resistance/add' do
     if !params[:resistance].values.any?(&:empty?)
-      @exercise = Exercise.create(params[:resistance])
+      @exercise = current_user.exercises.find_by(name: params[:name])
+      @exercise.update(params[:resistance])
       @workout = Workout.find_by(id: session[:workout_id])
       @exercise.workout_id = @workout.id
       @workout.exercises << @exercise
