@@ -3,6 +3,7 @@ class WorkoutsController < ApplicationController
   get '/workouts' do
     if logged_in?
       @user = User.find_by(id: session[:user_id])
+      @workouts = current_user.workouts.all.sort_by(&:date).reverse
       erb :'/workouts/index'
     else
       redirect_if_not_logged_in

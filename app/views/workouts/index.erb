@@ -2,7 +2,7 @@
 <br></br>
 <h3>Workouts</h3>
 <ul>
-  <% current_user.workouts.all.order(:date).each do |workout| %>
+  <% @workouts.each do |workout| %>
       <li><a href="/workouts/<%= workout.id %>"><%= workout.date %></li>
       <br></br>
   <% end %>
