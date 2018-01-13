@@ -1,0 +1,17 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1>Create Resistance Exercise</h1>
+<form action="/exercises/resistance/new" method="post">
+
+  <label>Name:</label>
+  <input type="text" name="resistance[name]">
+  <br></br>
+
+  <label>Description:</label>
+  <input type="text" name="resistance[description]">
+  <br></br>
+
+  <input type="submit" value="Create Exercise">
+</form>

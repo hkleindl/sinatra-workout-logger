@@ -80,4 +80,5 @@ class ExercisesController < ApplicationController
   end
 
 
+
 end
