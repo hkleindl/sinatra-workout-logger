@@ -50,4 +50,12 @@ class ExercisesController < ApplicationController
     end
   end
 
+  get '/exercises/resistance/add' do
+    if logged_in?
+      erb '/exercises/resistance/add'
+    else
+      redirect_if_not_logged_in
+    end
+  end
+
 end
