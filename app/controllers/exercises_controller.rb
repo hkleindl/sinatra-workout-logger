@@ -106,6 +106,7 @@ class ExercisesController < ApplicationController
 
   get '/exercises/cardio/:id/edit' do
     if logged_in?
+      @exercise = current_workout.exercises.find_by(id: params[:id])
       erb :'/exercises/cardio/edit'
     else
       redirect_if_not_logged_in
