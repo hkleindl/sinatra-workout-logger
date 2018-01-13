@@ -4,7 +4,8 @@
 
 <h1>Add Resistance Exercise</h1>
 <form action="/exercises/resistance/add" method="post">
-  <% if current_user.exercises.exists? %>
+  <% binding.pry %>
+  <% if current_user.exercises.where(category: 'resistance').exists? %>
     <h3><label>Choose Exercise:</label></h3>
     <% current_user.exercises.where(category: 'resistance').each do |exercise| %>
         <input type="radio" name="resistance[name]" value="<%= exercise.name %>"><%= exercise.name %></input>
