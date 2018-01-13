@@ -20,10 +20,10 @@
       <p>Reps:<%= exercise.reps %></p>
       <p>Weight:<%= exercise.weight %></p>
     <% end %>
-    <form style="display:inline" action="/exercises/<%= exercise.id %>/edit" method="post">
+    <form style="display:inline" action="/exercises/<%= exercise.category %>/<%= exercise.id %>/edit" method="get">
       <input type="submit" value="Edit">
     </form>
-    <form style="display:inline" action="/exercises/<%= exercise.id %>/delete" method="post">
+    <form style="display:inline" action="/exercises/<%= exercise.category %>/<%= exercise.id %>/delete" method="get">
       <input type="submit" value="Delete">
     </form>
   <br></br>
