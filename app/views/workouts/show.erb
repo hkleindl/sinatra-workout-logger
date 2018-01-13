@@ -10,9 +10,16 @@
   <h3>Exercises:</h3>
 
   <% current_workout.exercises.each do |exercise| %>
-    <h4><%= exercise.name %></h4>
-    <p>Intensity: <%= exercise.intensity %></p>
-    <p>Minutes Performed: <%= exercise.minutes %></p>
+  <% binding.pry %>
+  <h4><%= exercise.name %></h4>
+    <% if exercise.category == 'cardio' %>
+      <p>Intensity: <%= exercise.intensity %></p>
+      <p>Minutes Performed: <%= exercise.minutes %></p>
+    <% elsif exercise.category == 'resistance' %>
+      <p>Sets: <%= exercise.sets %></p>
+      <p>Reps:<%= exercise.reps %></p>
+      <p>Weight:<%= exercise.weight %></p>
+    <% end %>
     <form style="display:inline" action="/exercises/:id/edit" method="post">
       <input type="submit" value="Edit">
     </form>
