@@ -1,0 +1,28 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1>Add Resistance Exercise</h1>
+<form action="/exercises/resistance/add" method="post">
+  <% if current_user.exercises.exists? %>
+    <h3><label>Choose Exercise:</label></h3>
+    <% current_user.exercises.where(category: 'resistance').each do |exercise| %>
+        <input type="radio" name="resistance[name]" value="<%= exercise.name %>"><%= exercise.name %></input>
+    <% end %>
+    <br></br>
+
+    <label>Sets:</label>
+    <input type="number" min="1" name="resistance[sets]">
+    <br></br>
+
+    <label>Reps:</label>
+    <input type="number" min="1" name="resistance[reps]">
+    <br></br>
+
+    <input type="submit" value="Add Exercise">
+  <% end %>
+</form>
+
+<form action="/exercises/resistance/new" method="get">
+  <input type="submit" value="Create New Resistance Exercise">
+</form>
