@@ -113,4 +113,15 @@ class ExercisesController < ApplicationController
     end
   end
 
+  post '/exercises/:id/edit' do
+    if !params[:exercise].except(:description).values.any?(&:empty?)
+      @exercise = current_workout.exercises.find_by(id: params[:id])
+      @exercise.update(params[:exercise])
+      redirect "/workouts/#{current_workout.id}"
+    else
+      flash[:message] = "Please fill out fields. Description is optional."
+      redirect "/exercises/#{params[:id]}/edit"
+    end
+  end
+
 end

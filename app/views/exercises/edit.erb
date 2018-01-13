@@ -1,3 +1,8 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
 <h1>Edit</h1>
 <form action="/exercises/<%= @exercise.id %>/edit" method="post">
   <label>Name:</label>
@@ -16,7 +21,7 @@
     <br></br>
 
     <label>Minutes:</label>
-    <input type="number" name="exercise" value="<%= @exercise.minutes %>">
+    <input type="number" name="exercise[minutes]" value="<%= @exercise.minutes %>">
     <br></br>
 
   <% elsif @exercise.category == 'resistance' %>
