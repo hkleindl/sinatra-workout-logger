@@ -17,15 +17,19 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/cardio/new' do
-    if !params[:cardio][:name].empty?
-      # binding.pry
-      @exercise = Exercise.create(params[:cardio])
-      # @exercise.category = 'cardio'
-      # @exercise.save
-      current_user.exercises << @exercise
-      redirect '/exercises/cardio/add'
+    if !current_user.exercises.find_by(name: params[:cardio][:name])
+
+      if !params[:cardio][:name].empty?
+        @exercise = Exercise.create(params[:cardio])
+        current_user.exercises << @exercise
+        redirect '/exercises/cardio/add'
+      else
+        flash[:message] = "Please fill out name field"
+        redirect '/exercises/cardio/new'
+      end
+
     else
-      flash[:message] = "Please fill out name field"
+      flash[:message] = "That exercise already exists."
       redirect '/exercises/cardio/new'
     end
   end
@@ -40,7 +44,6 @@ class ExercisesController < ApplicationController
 
   post '/exercises/cardio/add' do
     if !params[:cardio].values.any?(&:empty?)
-      binding.pry
       @exercise = current_user.exercises.find_by(name: params[:name])
       @exercise.update(params[:cardio])
       @workout = Workout.find_by(id: session[:workout_id])
@@ -84,16 +87,20 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/resistance/new' do
-    if !params[:resistance][:name].empty?
-      @exercise = Exercise.create(params[:resistance])
-      @exercise.category = 'resistance'
-      @exercise.save
-      current_user.exercises << @exercise
-      redirect '/exercises/resistance/add'
+    if !current_user.exercises.find_by(name: params[:resistance][:name])
+
+      if !params[:resistance][:name].empty?
+        @exercise = Exercise.create(params[:resistance])
+        current_user.exercises << @exercise
+        redirect '/exercises/resistance/add'
+      else
+        flash[:message] = "Please fill out name field"
+        redirect '/exercises/resistance/new'
+      end
+
     else
-      flash[:message] = "Please fill out name field"
+      flash[:message] = "That exercise already exists."
       redirect '/exercises/resistance/new'
-    end
   end
 
 end
