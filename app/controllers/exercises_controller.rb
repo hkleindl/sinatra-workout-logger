@@ -79,6 +79,17 @@ class ExercisesController < ApplicationController
     end
   end
 
-
+  post '/exercises/resistance/new' do
+    if !params[:resistance][:name].empty?
+      @exercise = Exercise.create(params[:resistance])
+      @exercise.category = 'resistance'
+      @exercise.save
+      current_user.exercises << @exercise
+      redirect '/exercises/resistance/add'
+    else
+      flash[:message] = "Please fill out name field"
+      redirect '/exercises/resistance/new'
+    end
+  end
 
 end
