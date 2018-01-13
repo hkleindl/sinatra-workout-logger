@@ -101,6 +101,15 @@ class ExercisesController < ApplicationController
     else
       flash[:message] = "That exercise already exists."
       redirect '/exercises/resistance/new'
+    end
+  end
+
+  get '/exercises/cardio/:id/edit' do
+    if logged_in?
+      erb :'/exercises/cardio/edit'
+    else
+      redirect_if_not_logged_in
+    end
   end
 
 end
