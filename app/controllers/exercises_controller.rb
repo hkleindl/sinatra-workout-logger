@@ -104,11 +104,10 @@ class ExercisesController < ApplicationController
     end
   end
 
-  get '/exercises/cardio/:id/edit' do
+  get '/exercises/:id/edit' do
     if logged_in?
-      binding.pry
       @exercise = current_workout.exercises.find_by(id: params[:id])
-      erb :'/exercises/cardio/edit'
+      erb :'/exercises/edit'
     else
       redirect_if_not_logged_in
     end
