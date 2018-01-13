@@ -71,4 +71,13 @@ class ExercisesController < ApplicationController
     end
   end
 
+  get '/exercises/resistance/new' do
+    if logged_in?
+      erb :'/exercises/resistance/new'
+    else
+      redirect_if_not_logged_in
+    end
+  end
+
+
 end
