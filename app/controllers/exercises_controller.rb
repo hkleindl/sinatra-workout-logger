@@ -127,7 +127,7 @@ class ExercisesController < ApplicationController
 
   post '/exercises/:id/delete' do
     @exercise = current_workout.exercises.find_by(id: params[:id])
-    @exercise.destroy
+    current_workout.exercises.delete(@exercise)
     redirect "/workouts/#{current_workout.id}"
   end
 
