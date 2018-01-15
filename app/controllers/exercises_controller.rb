@@ -118,7 +118,6 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/:id/edit' do
-    # binding.pry
     if !params[:exercise].except(:description).values.any?(&:empty?)
       @exercise = current_workout.exercises.find_by(id: params[:id])
       @exercise.update(params[:exercise])

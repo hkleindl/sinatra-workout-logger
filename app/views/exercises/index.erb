@@ -1,4 +1,30 @@
-<h1>Exercises</h1>
-<% Exercises.all.each do |exercise| %>
-  <p><%= exercise.name %> - <%= exercise.category %></p>
+<h1>My Exercises</h1>
+<style>
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: center;
+}
+</style>
+<table>
+  <tr>
+  <th>Name</th>
+  <th>Category</th>
+  <th>Description</th>
+</tr>
+<% Exercise.all.each do |exercise| %>
+  <tr>
+    <td><%= exercise.name %></td>
+    <td><%= exercise.category %></td>
+    <td><%= exercise.description %></td>
+  </tr>
+  <form action="/exercises/<%= exercise.id %>/delete" method="post">
+
+  </form>
 <% end %>
+</table>
