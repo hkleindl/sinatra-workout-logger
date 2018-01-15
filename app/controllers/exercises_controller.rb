@@ -46,9 +46,11 @@ class ExercisesController < ApplicationController
     if !params[:cardio].values.any?(&:empty?)
       @exercise = current_user.exercises.find_by(name: params[:name])
       @exercise.update(params[:cardio])
-      @workout = Workout.find_by(id: session[:workout_id])
-      @exercise.workout_id = @workout.id
-      @workout.exercises << @exercise
+      # @workout = Workout.find_by(id: session[:workout_id])
+      # @exercise.workout_id = @workout.id
+      # @workout.exercises << @exercise
+      current_workout.exercises << @exercise
+      @exercise.workouts << current_workout
       redirect "/workouts/#{current_workout.id}"
     else
       flash[:message] = "Please fill out all forms"
