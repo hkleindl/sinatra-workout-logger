@@ -1,30 +1,11 @@
 <h1>My Exercises</h1>
-<style>
-table, th, td {
-    border: 1px solid grey;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
-th {
-    text-align: center;
-}
-</style>
-<table>
-  <tr>
-  <th>Name</th>
-  <th>Category</th>
-  <th>Description</th>
-</tr>
+
 <% current_user.exercises.each do |exercise| %>
-  <tr>
-    <td><%= exercise.name %></td>
-    <td><%= exercise.category %></td>
-    <td><%= exercise.description %></td>
-  </tr>
-  <form action="/exercises/<%= exercise.id %>/delete-from-my-exercises" method="post">
-    <input type="submit" value="Delete From My Exercises">
-  </form>
+    <h4><%= exercise.name %></h4>
+    <p><%= exercise.category %></p>
+    <p><%= exercise.description %></p>
+    <form action="/exercises/<%= exercise.id %>/delete-from-my-exercises" method="post">
+      <input type="submit" value="Delete From My Exercises">
+    </form>
+    <br></br>
 <% end %>
-</table>
