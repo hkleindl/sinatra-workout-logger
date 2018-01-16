@@ -17,14 +17,14 @@ th {
   <th>Category</th>
   <th>Description</th>
 </tr>
-<% Exercise.all.each do |exercise| %>
+<% current_user.exercises.each do |exercise| %>
   <tr>
     <td><%= exercise.name %></td>
     <td><%= exercise.category %></td>
     <td><%= exercise.description %></td>
   </tr>
-  <form action="/exercises/<%= exercise.id %>/delete" method="post">
-
+  <form action="/exercises/<%= exercise.id %>/delete-from-my-exercises" method="post">
+    <input type="submit" value="Delete From My Exercises">
   </form>
 <% end %>
 </table>

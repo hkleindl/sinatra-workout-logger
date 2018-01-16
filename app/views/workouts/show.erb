@@ -9,9 +9,8 @@
 <% if current_workout.exercises.exists? %>
   <h3>Exercises:</h3>
   <% current_workout.exercises.each do |exercise| %>
-  <% #binding.pry %>
-
   <h4><%= exercise.name %></h4>
+  <p><%= exercise.description %></p>
     <% if exercise.category == 'cardio' %>
       <p>Intensity: <%= exercise.intensity %></p>
       <p>Minutes Performed: <%= exercise.minutes %></p>
