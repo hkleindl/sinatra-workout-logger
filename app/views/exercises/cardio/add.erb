@@ -2,7 +2,7 @@
   <%= flash[:message] %>
 <% end %>
 
-<h1>Add Cardio</h1>
+<h2>Add Cardio</h2>
 <form action="/exercises/cardio/add" method="post">
   <% if current_user.exercises.where(category: 'cardio').exists? %>
     <h3><label>Choose Exercise:</label></h3>
@@ -25,7 +25,7 @@
   <% end %>
 </form>
 
-<h3>Or, Create New Exercise</h3>
+<h3>Create New Exercise</h3>
 <form action="/exercises/cardio/new" method="post">
   <input type="hidden" name="new_cardio[category]" value="cardio">
   <label>Name:</label>

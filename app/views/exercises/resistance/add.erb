@@ -2,7 +2,7 @@
   <%= flash[:message] %>
 <% end %>
 
-<h1>Add Resistance Exercise</h1>
+<h2>Add Resistance Exercise</h2>
 <form action="/exercises/resistance/add" method="post">
   <% if current_user.exercises.where(category: 'resistance').exists? %>
     <h3><label>Choose Exercise:</label></h3>
