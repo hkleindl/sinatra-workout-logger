@@ -1,16 +1,15 @@
-<h1>Welcome, <%= @user.username %></h1>
-<br></br>
+
 <% if current_user.workouts.exists? %>
-  <h3>Workouts</h3>
+  <h3>My Workouts</h3>
   <ul>
     <% @workouts.each do |workout| %>
         <li><a href="/workouts/<%= workout.id %>"><%= workout.date %></li>
         <br></br>
     <% end %>
   </ul>
+<% else %>
+  <h3>You don't have any workouts yet. To get started, click 'Add New Workout'</h3>
 <% end %>
 <form action="/workouts/new" method="get">
   <input type="submit" value="Add New Workout">
 </form>
-
-<h3><a href="/exercises">My Exercises</a></h3>

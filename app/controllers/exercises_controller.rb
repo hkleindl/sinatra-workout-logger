@@ -17,20 +17,22 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/cardio/new' do
-    if !current_user.exercises.find_by(name: params[:cardio][:name])
+    if !current_user.exercises.find_by(name: params[:new_cardio][:name])
 
-      if !params[:cardio][:name].empty?
-        @exercise = Exercise.create(params[:cardio])
+      if !params[:new_cardio].except(:description).values.any?(&:empty?)
+        @exercise = Exercise.create(params[:new_cardio])
         current_user.exercises << @exercise
-        redirect '/exercises/cardio/add'
+        current_workout.exercises << @exercise
+        @exercise.workout = current_workout
+        redirect "/workouts/#{current_workout.id}"
       else
-        flash[:message] = "Please fill out name field"
-        redirect '/exercises/cardio/new'
+        flash[:message] = "Please fill out all fields for choosing or creating an exercise"
+        redirect '/exercises/cardio/add'
       end
 
     else
       flash[:message] = "That exercise already exists."
-      redirect '/exercises/cardio/new'
+      redirect '/exercises/cardio/add'
     end
   end
 
@@ -46,14 +48,11 @@ class ExercisesController < ApplicationController
     if !params[:cardio].values.any?(&:empty?)
       @exercise = current_user.exercises.find_by(name: params[:name])
       @exercise.update(params[:cardio])
-      # @workout = Workout.find_by(id: session[:workout_id])
-      # @exercise.workout_id = @workout.id
-      # @workout.exercises << @exercise
       current_workout.exercises << @exercise
       @exercise.workout = current_workout
       redirect "/workouts/#{current_workout.id}"
     else
-      flash[:message] = "Please fill out all forms"
+      flash[:message] = "Please fill out all fields for choosing or creating an exercise"
       redirect '/exercises/cardio/add'
     end
   end
@@ -70,9 +69,6 @@ class ExercisesController < ApplicationController
     if !params[:resistance].values.any?(&:empty?)
       @exercise = current_user.exercises.find_by(name: params[:name])
       @exercise.update(params[:resistance])
-      # @workout = Workout.find_by(id: session[:workout_id])
-      # @exercise.workout_id = @workout.id
-      # @workout.exercises << @exercise
       current_workout.exercises << @exercise
       @exercise.workout = current_workout
       redirect "/workouts/#{current_workout.id}"
@@ -91,20 +87,22 @@ class ExercisesController < ApplicationController
   end
 
   post '/exercises/resistance/new' do
-    if !current_user.exercises.find_by(name: params[:resistance][:name])
+    if !current_user.exercises.find_by(name: params[:new_resistance][:name])
 
-      if !params[:resistance][:name].empty?
-        @exercise = Exercise.create(params[:resistance])
+      if !params[:new_resistance].except(:description).values.any?(&:empty?)
+        @exercise = Exercise.create(params[:new_resistance])
         current_user.exercises << @exercise
-        redirect '/exercises/resistance/add'
+        current_workout.exercises << @exercise
+        @exercise.workout = current_workout
+        redirect "/workouts/#{current_workout.id}"
       else
-        flash[:message] = "Please fill out name field"
-        redirect '/exercises/resistance/new'
+        flash[:message] = "Please fill out all fields for choosing or creating an exercise"
+        redirect '/exercises/resistance/add'
       end
 
     else
       flash[:message] = "That exercise already exists."
-      redirect '/exercises/resistance/new'
+      redirect '/exercises/resistance/add'
     end
   end
 

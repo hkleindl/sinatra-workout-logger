@@ -1,0 +1,10 @@
+
+<% if logged_in? %>
+  <h1>Workout Logger
+  <a style="font-size: 50%" href="/workouts">My Workouts</a>
+  <a style="font-size: 50%" href="/exercises">My Exercises</a>
+  <a style="font-size: 50%" href="/logout">Log Out</a>
+  </h1>
+<% end %>
+
+  <%= yield %>

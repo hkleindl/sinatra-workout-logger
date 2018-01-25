@@ -27,6 +27,28 @@
   <% end %>
 </form>
 
-<form action="/exercises/resistance/new" method="get">
-  <input type="submit" value="Create New Resistance Exercise">
+<h3>Create Resistance Exercise</h3>
+<form action="/exercises/resistance/new" method="post">
+  <input type="hidden" name="new_resistance[category]" value="resistance">
+  <label>Name:</label>
+  <input type="text" name="new_resistance[name]">
+  <br></br>
+
+  <label>Description:</label>
+  <input type="text" name="new_resistance[description]">
+  <br></br>
+
+  <label>Sets:</label>
+  <input type="number" min="1" name="new_resistance[sets]">
+  <br></br>
+
+  <label>Reps:</label>
+  <input type="number" min="1" name="new_resistance[reps]">
+  <br></br>
+
+  <label>Weight:</label>
+  <input type="number" min="1" name="new_resistance[weight]">
+  <br></br>
+
+  <input type="submit" value="Add To Workout">
 </form>

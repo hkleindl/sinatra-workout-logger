@@ -25,6 +25,28 @@
   <% end %>
 </form>
 
-<form action="/exercises/cardio/new" method="get">
-  <input type="submit" value="Create New Cardio Exercise">
+<h3>Or, Create New Exercise</h3>
+<form action="/exercises/cardio/new" method="post">
+  <input type="hidden" name="new_cardio[category]" value="cardio">
+  <label>Name:</label>
+  <input type="text" name="new_cardio[name]">
+  <br></br>
+
+  <label>Description (optional):</label>
+  <input type="text" name="new_cardio[description]">
+  <br></br>
+
+  <label>Intensity:</label>
+  <input type="radio" name="new_cardio[intensity]" value="low">Low</input>
+  <input type="radio" name="new_cardio[intensity]" value="medium">Medium</input>
+  <input type="radio" name="new_cardio[intensity]" value="high">High</input>
+  <br></br>
+
+  <label>Minutes Performed:</label>
+  <input type="number" min="1" name="new_cardio[minutes]">
+  <br></br>
+
+  <input type="submit" value="Add To Workout">
+
+
 </form>
